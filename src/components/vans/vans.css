@@ -1,0 +1,13 @@
+.vans-con {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.van-card {
+    width: 10%;
+    margin: 20px;
+}
+
+.van-card img {
+    width: 10rem;
+}
