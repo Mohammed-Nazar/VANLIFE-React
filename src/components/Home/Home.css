@@ -7,7 +7,7 @@
       rgba(0, 0, 0, 0.46) 0%,
       rgba(0, 0, 0, 0.46) 100%
     ),
-    url("images/home-hero.png"),
+    url("./images/home-hero.png"),
     lightgray 0px -65.191px / 100% 178.109% no-repeat;
   background-size: cover;
   background-repeat: no-repeat;
