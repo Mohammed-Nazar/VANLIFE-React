@@ -1,0 +1,36 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about--text {
+  margin: 40px;
+}
+
+.about--text h2 {
+  margin-bottom: 20px;
+}
+
+.about--text p {
+  margin-bottom: 40px;
+}
+
+.about--for {
+  padding: 40px;
+  border-radius: 5px;
+  background: #ffcc8d;
+  width: fit-content;
+}
+
+.about--for button {
+    display: inline-flex;
+    padding: 12px 22px 13px 22px;
+    justify-content: center;
+    align-items: center;    border-radius: 10px;
+    margin-top: 20px;
+    background: #161616;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
