@@ -1,13 +1,95 @@
+.simple {
+  color: #ffead0;
+  text-align: center;
+  border-radius: 5px;
+  background: #e17654;
+  font-weight: 600;
+  padding: 5px;
+}
+
+.rugged {
+  background-color: #115e59;
+  color: #ffead0;
+  text-align: center;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 600;
+  padding: 5px;
+}
+
+.luxury {
+  background-color: #161616;
+  color: #ffead0;
+  text-align: center;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 600;
+  padding: 5px;
+}
+
+.vans-title {
+  padding: 25px;
+  background-color: #f7eee3;
+}
+
+.vans-title h2 {
+}
+.vans-title ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.vans-title ul li {
+  margin: 10px 20px 0px 0px;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #ffead0;
+  padding: 5px 15px; 
+  font-weight: 200;
+}
+
+.vans-title ul p {
+  margin: 10px;
+  text-decoration: 1px solid underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.vans-con button {
+  border: none;
+}
+
 .vans-con {
-    display: flex;
-    flex-wrap: wrap;
+  background-color: #f7eee3;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 15px;
 }
 
 .van-card {
-    width: 10%;
-    margin: 20px;
+  padding: 10px;
 }
 
 .van-card img {
-    width: 10rem;
+  width: 14rem;
+}
+
+.van-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.van-price h3 {
+  font-size: 16px;
+}
+
+.van-price p {
+  font-size: 14px;
+}
+
+.van-price span {
+  display: block;
 }
