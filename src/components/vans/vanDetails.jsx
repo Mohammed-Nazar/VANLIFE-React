@@ -15,8 +15,11 @@ export default function VanDetails() {
       .then((data) => setVan(data.vans));
     setIsLoading(false);
   }, []);
-  console.log(van);
-  const vanEl = isLoading ? (
+
+  
+  
+  
+  const vanEl = isLoading || Object.keys(van).length === 0? (
     <h1>Loading...</h1>
   ) : (
     <div className="vanD">

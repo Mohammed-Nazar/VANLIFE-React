@@ -1,0 +1,10 @@
+.error {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.error p {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+}
