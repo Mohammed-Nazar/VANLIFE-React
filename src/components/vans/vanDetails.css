@@ -1,0 +1,58 @@
+.vanD-con {
+    background-color: #f7eee3;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.back{
+    margin: 20px 0px;
+    width: fit-content;
+}
+
+.back h3 span {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.vanD {
+    display: flex;
+    flex-direction: column;
+}
+
+.vanD .van-type {
+    margin: 40px 0px 10px;
+    width: fit-content;
+    border: none;
+}
+
+.vanD h2 {
+    margin: 0px 0px 5px;
+}
+
+.vanD .van-p {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.van-p span {
+    font-weight: 200;
+}
+
+.van-des {
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.rent-btn {
+    border-radius: 4.983px;
+background: #FF8C38;
+border-radius: 5px;
+outline: none;
+border: none;
+padding: 5px;
+font-size: 16px;
+color: #fff;
+font-weight: 500;
+margin-bottom: 20px;
+}
