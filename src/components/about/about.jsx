@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 export default function About() {
   return (
     <>
-      <Nav AcAb={true} />
       <div className="about">
         <img src="./images/about-hero.png" alt="" />
         <div className="about--text">
@@ -24,7 +23,6 @@ export default function About() {
         </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

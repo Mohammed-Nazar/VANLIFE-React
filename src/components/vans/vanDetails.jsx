@@ -1,27 +1,43 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import Nav from "../Nav/Nav";
 import "./vanDetails.css";
 import { useState, useEffect } from "react";
 import Footer from "../footer/footer";
+import Error from "./../error"
 
 export default function VanDetails() {
   const param = useParams();
-  const [van, setVan] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  const [van, setVan] = useState(null);
+  const [isfound, setIsfound] = useState(true);
 
   useEffect(() => {
     fetch(`/api/vans/${param.id}`)
       .then((res) => res.json())
-      .then((data) => setVan(data.vans));
-    setIsLoading(false);
+      .then((data) => {
+        setVan(data?.vans)
+        data == null ? setIsfound(false): null;
+      });
   }, []);
+
+  if (isfound == false) {
+    return <Navigate to="/vans"/>
+  }
+
 
   
   
+
   
-  const vanEl = isLoading || Object.keys(van).length === 0? (
-    <h1>Loading...</h1>
-  ) : (
+  
+  const vanEl = van ? (
+    
+    <>
+
+    <div className="back">
+        <Link to="/vans">
+        <h3>← <span>Back to all vans</span></h3>
+        </Link>
+      </div>
     <div className="vanD">
       <img src={van.imageUrl} />
       <button className={`van-type ${van.type} selected`}>{van.type}</button>
@@ -32,20 +48,16 @@ export default function VanDetails() {
       <p className="van-des">{van.description}</p>
       <button className="rent-btn">Rent this van</button>
     </div>
+    </>
+  ) : (
+    <h1>Loading...</h1>
   );
 
   return (
     <>
-      <Nav />
       <div className="vanD-con">
-      <div className="back">
-        <Link to="/vans">
-        <h3>← <span>Back to all vans</span></h3>
-        </Link>
-      </div>
       {vanEl}
       </div>
-      <Footer/>
     </>
   );
 }
