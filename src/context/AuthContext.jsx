@@ -19,7 +19,9 @@ updateProfile(auth.currentUser,{
   displayName: UserName,
 })
   }
-  
+  console.log();
+
+
 
   const updatePhoto = (image) =>{
     const imageRef = ref(storage, `users/${currentUser.uid}/images/${currentUser.uid}`)
