@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Nav from "../Nav/Nav";
 import Footer from "../footer/footer";
-import "../../server";
 import "./vans.css";
 import { Link } from "react-router-dom";
 
@@ -11,16 +10,17 @@ export default function Vans() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/vans")
+    fetch("https://x3raqe.store/json/api.json")
       .then((res) => res.json())
-      .then((data) => setVans(data.vans));
+      .then((data) => {
+        setVans(data.vans)});
     setIsLoading(false);
   }, []);
 
   const vanEl = vans.map((van) => {
     if (van.type == filter) {
       return (
-        <Link to={van.id}>
+        <Link key={van.id} to={van.id}>
           <div key={van.id} className="van-card">
             <img src={van.imageUrl} />
             <div className="van-info">
@@ -41,7 +41,7 @@ export default function Vans() {
     }
     if (filter == null) {
       return (
-        <Link to={van.id}>
+        <Link key={van.id} to={van.id}>
           <div key={van.id} className="van-card">
             <img src={van.imageUrl} />
             <div className="van-info">

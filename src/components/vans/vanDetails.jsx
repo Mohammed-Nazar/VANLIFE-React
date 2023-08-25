@@ -11,10 +11,10 @@ export default function VanDetails() {
   const [isfound, setIsfound] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/vans/${param.id}`)
+    fetch("https://x3raqe.store/json/api.json")
       .then((res) => res.json())
       .then((data) => {
-        setVan(data?.vans)
+        setVan(data?.vans[param.id - 1])
         data == null ? setIsfound(false): null;
       });
   }, []);
