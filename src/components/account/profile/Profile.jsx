@@ -30,7 +30,7 @@ const Profile = () => {
         <Link to="/editeProfile">
           <button className="editeProfile-btn">🔏 Edite proflie</button>
         </Link>
-        <button onClick={handleClick}>signout</button>
+        <button onClick={handleClick} className="signout-btn">signout</button>
       </div>
     </>
   );

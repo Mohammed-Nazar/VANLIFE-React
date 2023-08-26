@@ -20,9 +20,13 @@ export const Login = () => {
     try {
       setError("");
       await login(email, password);
-      navigate("/host");
+      if (currentUser) {
+        navigate("/host");
+      } else {
+        setError("failed to login");
+      }
     } catch {
-      setError("Flaied");
+      setError("failed");
     }
   };
 
@@ -30,7 +34,6 @@ export const Login = () => {
     <>
       <div className="signup">
         <h4 className="signup-header">Login</h4>
-        {error}
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-email input">
             <label htmlFor="email">Email</label>
@@ -54,6 +57,7 @@ export const Login = () => {
           </div>
           <button className="login-btn btn">Login</button>
         </form>
+        <p style={{color: "red"}}>{error}</p>
         <p>
           Not registered?{" "}
           <Link to="/signup" style={{ textDecoration: "underline" }}>

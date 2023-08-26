@@ -15,7 +15,6 @@ import { Navigate, redirect, useNavigate } from "react-router-dom";
    )
       
    let navigate = useNavigate(); 
-      console.log(currentUser)
 const handleClick = async(e)=>{
     try{
         seterror("Done Changed")
@@ -27,7 +26,7 @@ const handleClick = async(e)=>{
         try {
             setTimeout(() => {
                 navigate("/profile") 
-            }, 3000);
+            }, 1000);
         }catch{
 
         }
@@ -36,12 +35,16 @@ const handleClick = async(e)=>{
         setLoading(false)
     }
 }
-    console.log(image)
   return (
     <div className="edite-con">
         <div className="img-con">
             <img src={src} alt="Profile Image" />
+            <label className="custom-file">
+            Choose File 
+            <sub>{image?.name}</sub>
             <input onChange={e=>{setProfileImg(e.target.files[0]); setLoading(false)}} type="file" name="image" id="image" />
+            </label>
+            
         </div>
         <div className="name-con">
             <label htmlFor="name">Name </label>
