@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { auth, storage } from "../firebase";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateCurrentUser , updateProfile} from "firebase/auth";
+import { sendEmailVerification,createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateCurrentUser , updateProfile} from "firebase/auth";
 import { Navigate } from "react-router-dom";
 import { getDownloadURL, uploadBytes, ref } from "firebase/storage";
 
@@ -9,7 +9,8 @@ export const AuthContext = createContext();
 
 export const AuthContextProvider = ({children})=>{
   const [currentUser, setCurrentUser] =  useState(JSON.parse(localStorage.getItem("currentUser")));
-
+  const [verified, setverified] =  useState(currentUser?.emailVerified);
+  
   const signup = (email,password)=>{
     createUserWithEmailAndPassword(auth,email,password)
   }
@@ -19,8 +20,10 @@ updateProfile(auth.currentUser,{
   displayName: UserName,
 })
   }
-  console.log();
 
+  const emailVerify = ()=>{
+    sendEmailVerification(currentUser);
+  }
 
 
   const updatePhoto = (image) =>{
@@ -69,6 +72,8 @@ updateProfile(auth.currentUser,{
     login,
     upProfile,
     updatePhoto,
+    emailVerify,
+    verified,
     currentUser
   }
 

@@ -10,6 +10,8 @@ export default function SignUp() {
   const [error, setError] = useState("");
   const { currentUser, signup } = useAuth();
   const navigate = useNavigate();
+  const [valid, setValid] = useState();
+
 
   useEffect(() => {
     if (currentUser) {
@@ -19,13 +21,19 @@ export default function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      setError("");
-      await signup(email, password);
-      navigate("/host");
-    } catch {
-      setError("Flaied");
+    if (String(email).toLowerCase().match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
+      setValid("");
+      try {
+        setError("");
+        await signup(email, password);
+        navigate("/host");
+      } catch {
+        setError("Flaied");
+      }
+    } else if(!(String(email).toLowerCase().match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g))){
+      setValid("email not valid !")
     }
+    
   };
 
   return (
@@ -41,8 +49,9 @@ export default function SignUp() {
               type="email"
               name="email"
               id="email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {setEmail(e.target.value); setValid("")}}
             />
+            <p>{valid}</p>
           </div>
           <div className="form-password-signup input">
             <label htmlFor="password">Password</label>

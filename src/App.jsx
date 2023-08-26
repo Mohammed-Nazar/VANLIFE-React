@@ -12,6 +12,8 @@ import Login from "./components/account/login/Login";
 import RequireAuth from "./context/RequireAuth";
 import Profile from "./components/account/profile/Profile";
 import EditeProfile from "./components/account/EditeProfile/EditeProfile";
+import Verify from "./components/account/verify/Verify";
+import RequireVerify from "./context/RequireVerify";
 
 
 function App() {
@@ -27,10 +29,12 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route element={<RequireAuth />}>
-              <Route path="/profile" element={<Profile />} />
+             <Route element={<RequireVerify/>}>
+             <Route path="/profile" element={<Profile />} />
               <Route path="/host" element={<Host />} />
               <Route path="/editeProfile" element={<EditeProfile />} />
-
+             </Route>
+             <Route path="/emailVerify" element={<Verify/>}/>
             </Route>
             <Route path="*" element={<Error />} />
           </Route>
