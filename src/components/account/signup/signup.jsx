@@ -11,11 +11,13 @@ export default function SignUp() {
   const { currentUser, signup } = useAuth();
   const navigate = useNavigate();
   const [valid, setValid] = useState();
+  const [samePass, setSamePass] = useState(true);
+
 
 
   useEffect(() => {
     if (currentUser) {
-      navigate("/host");
+      navigate("/emailVerify");
     }
   });
 
@@ -23,13 +25,19 @@ export default function SignUp() {
     e.preventDefault();
     if (String(email).toLowerCase().match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
       setValid("");
-      try {
-        setError("");
-        await signup(email, password);
-        navigate("/host");
-      } catch {
-        setError("Flaied");
-      }
+      if (password === confirmPassword) {
+        setSamePass(true)
+        try {
+          setError("");
+          await signup(email, password);
+          navigate("/emailVerify");
+        } catch {
+          setError("Flaied");
+        }
+      } else if(password != confirmPassword){
+        setSamePass(false)
+            }
+      
     } else if(!(String(email).toLowerCase().match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g))){
       setValid("email not valid !")
     }
@@ -57,7 +65,7 @@ export default function SignUp() {
             <label htmlFor="password">Password</label>
             <input
               required
-              type="text"
+              type="password"
               name="password"
               id="password"
               onChange={(e) => setPassword(e.target.value)}
@@ -67,12 +75,13 @@ export default function SignUp() {
             <label htmlFor="confirmPassword">Confirm password</label>
             <input
               required
-              type="text"
+              type="password"
               name="confirmPassword"
               id="confirmPassword"
               onChange={(e) => setconfirmPassword(e.target.value)}
             />
           </div>
+          <p>{samePass ? null : "Passwords not the same"}</p>
           <button className="signup-btn btn">Sign Up</button>
         </form>
         <p>

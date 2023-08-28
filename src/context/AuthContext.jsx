@@ -15,6 +15,18 @@ export const AuthContextProvider = ({children})=>{
     createUserWithEmailAndPassword(auth,email,password)
   }
 
+  const upProfilePro = (name,photo) =>{
+    const imgRef = ref(storage, `users/${currentUser.uid}/images/${currentUser.uid}`)
+    uploadBytes(imgRef, photo).then(()=>{
+      getDownloadURL(imgRef).then((url)=>{
+        updateProfile(auth.currentUser,{
+          displayName: name,
+          photoURL: url,
+        })
+      })
+    })
+      }
+
   const upProfile = (UserName) =>{
 updateProfile(auth.currentUser,{
   displayName: UserName,
@@ -37,7 +49,7 @@ updateProfile(auth.currentUser,{
     })
   }
   const login = (email,password)=>{
-    signInWithEmailAndPassword(auth,email,password)
+   return signInWithEmailAndPassword(auth,email,password)
   }
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('currentUser'));
@@ -73,6 +85,7 @@ updateProfile(auth.currentUser,{
     upProfile,
     updatePhoto,
     emailVerify,
+    upProfilePro,
     verified,
     currentUser
   }

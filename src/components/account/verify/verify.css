@@ -1,0 +1,42 @@
+.verify {
+    text-align: center;
+}
+
+.verify-head {
+    margin: 10px;
+}
+
+.acc-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.name-input {
+    border: 1px solid black;
+    padding: 2px;
+    background-color: #f7eee3;
+    border-radius: 10px;
+}
+
+.up-input {
+    margin: 10px;
+    border: 1px dashed black;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.none {
+    display: none;
+}
+
+.verify-info-btn {
+    margin: 10px;
+    padding: 5px 20px;
+    background-color: bisque;
+}
+
+.verify-btn {
+    margin: 10px;
+}

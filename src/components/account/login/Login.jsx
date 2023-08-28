@@ -11,20 +11,15 @@ export const Login = () => {
 
   useEffect(() => {
     if (currentUser) {
-      navigate("/host");
+      navigate("/emailVerify");
     }
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setError("");
       await login(email, password);
-      if (currentUser) {
-        navigate("/host");
-      } else {
-        setError("failed to login");
-      }
+      setError("");
     } catch {
       setError("failed");
     }
