@@ -1,9 +1,6 @@
 import { Link, useParams, Navigate } from "react-router-dom";
-import Nav from "../Nav/Nav";
 import "./vanDetails.css";
 import { useState, useEffect } from "react";
-import Footer from "../footer/footer";
-import Error from "./../error"
 
 export default function VanDetails() {
   const param = useParams();

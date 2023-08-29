@@ -6,12 +6,15 @@ export const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState("");
-  const { currentUser, login } = useAuth();
+  const { currentUser, login, verified } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser && !verified) {
       navigate("/emailVerify");
+    }
+    if (currentUser && verified) {
+      navigate("/host");
     }
   });
 

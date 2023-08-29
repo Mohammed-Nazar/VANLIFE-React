@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Nav.css";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect } from "react";
 import { useState } from "react";
 
 export default function Nav(prop) {
-  const { currentUser } = useAuth();
+  const { pathname } = useLocation();
+  const { currentUser, verified } = useAuth();
+  const path = pathname.slice(1)
   return (
     <>
       <div className="nav">
@@ -17,7 +19,7 @@ export default function Nav(prop) {
             <Link to="/profile">
               <li
                 style={
-                  prop.AcAb
+                  path == "profile"
                     ? { textDecoration: "underline" }
                     : { textDecoration: "none" }
                 }
@@ -29,7 +31,7 @@ export default function Nav(prop) {
           <Link to="/about">
             <li
               style={
-                prop.AcAb
+                path == "about"
                   ? { textDecoration: "underline" }
                   : { textDecoration: "none" }
               }
@@ -40,7 +42,7 @@ export default function Nav(prop) {
           <Link to="/vans">
             <li
               style={
-                prop.AcVa
+                path == "vans"
                   ? { textDecoration: "underline" }
                   : { textDecoration: "none" }
               }
@@ -48,16 +50,16 @@ export default function Nav(prop) {
               Vans
             </li>
           </Link>
-          {!currentUser ?
+          {currentUser ?
           <Link to="/host">
             <li
               style={
-                prop.AcVa
+                path == "host"
                   ? { textDecoration: "underline" }
                   : { textDecoration: "none" }
               }
             >
-              login
+              host
             </li>
           </Link>: null}
         </ul>
