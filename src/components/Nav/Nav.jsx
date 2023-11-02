@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation,NavLink } from "react-router-dom";
 import "./Nav.css";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect } from "react";
@@ -16,52 +16,39 @@ export default function Nav(prop) {
         </Link>
         <ul>
           {currentUser ? (
-            <Link to="/profile">
-              <li
-                style={
-                  path == "profile"
-                    ? { textDecoration: "underline" }
-                    : { textDecoration: "none" }
-                }
-              >
+            <NavLink style={({isActive})=>isActive ? { textDecoration: "underline", textUnderlineOffset: "5px" }
+            : { textDecoration: "none" }} to="/profile">
+              <li>
                 account
               </li>
-            </Link>
+            </NavLink>
           ) : null}{" "}
-          <Link to="/about">
-            <li
-              style={
-                path == "about"
-                  ? { textDecoration: "underline" }
-                  : { textDecoration: "none" }
-              }
-            >
+          <NavLink style={({isActive})=>isActive ? { textDecoration: "underline", textUnderlineOffset: "5px" }
+            : { textDecoration: "none" }} to="/about">
+            <li>
               About
             </li>
-          </Link>
-          <Link to="/vans">
-            <li
-              style={
-                path == "vans"
-                  ? { textDecoration: "underline" }
-                  : { textDecoration: "none" }
-              }
-            >
+          </NavLink>
+          <NavLink style={({isActive})=>isActive ? { textDecoration: "underline", textUnderlineOffset: "5px" }
+            : { textDecoration: "none" }} to="/vans">
+            <li>
               Vans
             </li>
-          </Link>
+          </NavLink>
           {currentUser ?
-          <Link to="/host">
-            <li
-              style={
-                path == "host"
-                  ? { textDecoration: "underline" }
-                  : { textDecoration: "none" }
-              }
-            >
+          <NavLink style={({isActive})=>isActive ? { textDecoration: "underline", textUnderlineOffset: "5px" }
+          : { textDecoration: "none" }} to="/host">
+            <li>
               host
             </li>
-          </Link>: null}
+          </NavLink>: null}
+          {!currentUser ?
+          <NavLink style={({isActive})=>isActive ? { textDecoration: "underline", textUnderlineOffset: "5px" }
+          : { textDecoration: "none" }} to="/login">
+            <li>
+              login
+            </li>
+          </NavLink>: null}
         </ul>
       </div>
     </>

@@ -8,7 +8,7 @@ export const Login = () => {
   const [error, setError] = useState("");
   const { currentUser, login, verified } = useAuth();
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     if (currentUser && !verified) {
       navigate("/emailVerify");

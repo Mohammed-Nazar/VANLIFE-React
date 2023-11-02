@@ -10,7 +10,7 @@ export default function Vans() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://x3raqe.store/json/api.json")
+    fetch("api/vans")
       .then((res) => res.json())
       .then((data) => {
         setVans(data.vans)});
